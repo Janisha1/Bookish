@@ -1,0 +1,12 @@
+@model BookViewModel
+@{
+    ViewData["Title"] = "Book Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@Model.Title</h1>
+    <img src="@Model.CoverPhotoUrl" alt="Book Cover Image">
+    <p>@Model.Blurb</p>
+    <p>@Model.Genre</p>
+    <p>@Model.YearPublished</p>
+</div>
