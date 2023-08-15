@@ -1,0 +1,36 @@
+﻿@model List<BookViewModel>
+@{
+    ViewData["Title"] = "Book List";
+}
+
+<div class="text-center">
+    @foreach (BookViewModel book in Model)
+    {
+        <h1 class="display-4">@book.Title</h1>
+        @if (string.IsNullOrEmpty(book.CoverPhotoUrl))
+        {
+            <p>No Cover Image Available @book.Title</p>
+        }
+        else
+        {
+            <img src="@book.CoverPhotoUrl" alt="Book Cover Image">
+        }
+
+        @if (string.IsNullOrEmpty(book.Genre))
+        {
+            <p>No Genre Available</p>
+        }
+        else
+        {
+            <p>@book.Genre</p>
+        }
+        @if (book.YearPublished.HasValue)
+        {
+            <p>@book.YearPublished</p>
+        }
+        else
+        {
+            <p>No Year of Publication available.</p>
+        }
+    }
+</div>

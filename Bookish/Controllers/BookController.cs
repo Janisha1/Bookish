@@ -13,7 +13,7 @@ public class BookController : Controller
         _logger = logger;
     }
 
-    [HttpGet("booklist")]
+    [HttpGet("index")]
     public IActionResult Index()
     {
         var books = new List<BookViewModel>
@@ -38,7 +38,7 @@ public class BookController : Controller
             }
         };
 
-        return View("booklist", books);
+        return View("index", books);
     }
 
     [HttpGet("book")]

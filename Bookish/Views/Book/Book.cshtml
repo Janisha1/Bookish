@@ -5,8 +5,40 @@
 
 <div class="text-center">
     <h1 class="display-4">@Model.Title</h1>
-    <img src="@Model.CoverPhotoUrl" alt="Book Cover Image">
-    <p>@Model.Blurb</p>
-    <p>@Model.Genre</p>
-    <p>@Model.YearPublished</p>
+
+    @if(string.IsNullOrEmpty(Model.CoverPhotoUrl))
+    {
+        <p>No Cover Image Available @Model.Title</p>
+    } 
+    else 
+    {        
+         <img src="@Model.CoverPhotoUrl" alt="Book Cover Image">
+    }
+
+    @if(string.IsNullOrEmpty(Model.Blurb))
+    {
+        <p>No Blurb Available</p>
+    } 
+    else 
+    {        
+        <p>@Model.Blurb</p>
+    }
+
+    @if(string.IsNullOrEmpty(Model.Genre))
+    {
+        <p>No Genre Available</p>
+    } 
+    else 
+    {        
+        <p>@Model.Genre</p>
+    } 
+ 
+    @if(Model.YearPublished.HasValue )
+    {
+        <p>@Model.YearPublished</p>
+    } else 
+    {
+        <p>No Year of Publication available.</p>
+    }
+    
 </div>
