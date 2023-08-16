@@ -14,6 +14,10 @@ public class BookViewModel
 
     public int? YearPublished { get; set; }
 
+    public List<AuthorViewModel>? Authors { get; set; } 
+
+    public List<BookCopyViewModel>? Copies { get; set; }   
+
     public BookViewModel(string isbn, string title)
     {
         Isbn = isbn;

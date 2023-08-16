@@ -12,6 +12,8 @@ public class AuthorViewModel
 
     public string? Bio { get; set; }
 
+    public List<BookViewModel>? Books { get; set; }
+
     public AuthorViewModel(int id, string name)
     {
         Id = id;

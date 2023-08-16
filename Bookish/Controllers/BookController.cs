@@ -4,6 +4,7 @@ using Bookish.Models;
 
 namespace Bookish.Controllers;
 
+[Route("/Books")]
 public class BookController : Controller
 {
     private readonly ILogger<BookController> _logger;
@@ -13,8 +14,7 @@ public class BookController : Controller
         _logger = logger;
     }
 
-    [Route("/Books")]
-    [HttpGet("index")]
+    [HttpGet("")]
     public IActionResult Index()
     {
         var books = new List<BookViewModel>
@@ -27,6 +27,8 @@ public class BookController : Controller
                 ,Blurb = "It's an ordinary Thursday lunchtime for Arthur Dent until his house gets demolished. The Earth follows shortly afterwards to make way for a new hyperspace express route, and his best friend has just announced that he's an alien."
                 ,Genre = "comedy science fiction"
                 ,YearPublished = 1979
+                ,Authors = new List<AuthorViewModel>(){}
+                ,Copies = new List<BookCopyViewModel>(){}
             },
         new BookViewModel(
                 "9780330508117"
@@ -36,12 +38,15 @@ public class BookController : Controller
                 ,Blurb = "It's an ordinary Thursday lunchtime for Arthur Dent until his house gets demolished. The Earth follows shortly afterwards to make way for a new hyperspace express route, and his best friend has just announced that he's an alien."
                 ,Genre = "comedy science fiction"
                 ,YearPublished = 1979
+                ,Authors = new List<AuthorViewModel>(){}
+                ,Copies = new List<BookCopyViewModel>(){}
             }
         };
 
         return View("index", books);
     }
 
+    // [Route("/Books")]
     [HttpGet("book")]
     public IActionResult GetBook()
     {
@@ -57,6 +62,10 @@ public class BookController : Controller
             Genre = "comedy science fiction"
             ,
             YearPublished = 1979
+            ,
+            Authors = new List<AuthorViewModel>() { }
+            ,
+            Copies = new List<BookCopyViewModel>() { }
         };
         return View("Book", book);
     }
