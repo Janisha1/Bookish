@@ -1,0 +1,37 @@
+﻿@model List<AuthorViewModel>
+@{
+    ViewData["Title"] = "Author List";
+}
+
+<div class="text-center">
+    @foreach (AuthorViewModel author in Model)
+    {
+        <h1 class="display-4">@author.Name</h1>
+        @if (string.IsNullOrEmpty(author.AuthorPhotoUrl))
+        {
+            <p>No Author Image Available for @author.Name</p>
+        }
+        else
+        {
+            <img src="@author.AuthorPhotoUrl" alt="@author.Name Image">
+        }
+
+        @if (author.YearOfBirth.HasValue)
+        {
+            <p>@author.YearOfBirth</p>
+        }
+        else
+        {
+            <p>No Year of Birth available.</p>
+        }
+
+        @if (string.IsNullOrEmpty(author.Bio))
+        {
+            <p>No Bio Available</p>
+        }
+        else
+        {
+            <p>@author.Bio</p>
+        }
+    }
+</div>

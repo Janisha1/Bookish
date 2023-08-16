@@ -1,0 +1,35 @@
+@model AuthorViewModel
+@{
+    ViewData["Title"] = "Author Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@Model.Name</h1>
+
+    @if(string.IsNullOrEmpty(Model.AuthorPhotoUrl))
+    {
+        <p>No Author Image Available for @Model.Name</p>
+    } 
+    else 
+    {        
+         <img src="@Model.AuthorPhotoUrl" alt="@Model.Name Image">
+    }
+
+    @if(Model.YearOfBirth.HasValue )
+    {
+        <p>@Model.YearOfBirth</p>
+    } else 
+    {
+        <p>No Year of Birth available.</p>
+    }
+
+
+    @if(string.IsNullOrEmpty(Model.Bio))
+    {
+        <p>No Bio Available</p>
+    } 
+    else 
+    {        
+        <p>@Model.Bio</p>
+    }
+</div>

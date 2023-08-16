@@ -13,6 +13,7 @@ public class BookController : Controller
         _logger = logger;
     }
 
+    [Route("/Books")]
     [HttpGet("index")]
     public IActionResult Index()
     {
