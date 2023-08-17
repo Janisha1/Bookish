@@ -28,6 +28,7 @@ public class AuthorRepo: IAuthorRepo
     public AuthorModel GetAuthorById(int id)
     {
         return _context.Authors
+        .Include(a => a.Books)
         .Where(a => a.Id == id)
         .Single();
     }
