@@ -1,3 +1,5 @@
+using Bookish.Models.Database;
+
 namespace Bookish.Models;
 
 public class BookViewModel
@@ -14,13 +16,45 @@ public class BookViewModel
 
     public int? YearPublished { get; set; }
 
-    public List<AuthorViewModel>? Authors { get; set; } 
+    public class BookAuthorViewModel
+    {
+        public int? Id { get; set; }
+        public string? Name { get; set; }
 
-    public List<BookCopyViewModel>? Copies { get; set; }   
+        public BookAuthorViewModel(AuthorModel dbModel){
+            Id = dbModel.Id;
+            Name = dbModel.Name;
+        }
+    }
+
+
+    public List<BookAuthorViewModel>? Authors { get; set; }
+
+    public List<BookCopyViewModel>? Copies { get; set; }
 
     public BookViewModel(string isbn, string title)
     {
         Isbn = isbn;
         Title = title;
+        Authors = new List<BookAuthorViewModel>();
+    }
+
+    public BookViewModel(BookModel dbModel)
+    {
+
+        if (dbModel.Isbn == null || dbModel.Title == null || dbModel.Authors == null)
+        {
+            throw new ArgumentException("fields can't be null");
+        }
+        else
+        {
+            Isbn = dbModel.Isbn;
+            Title = dbModel.Title;
+            CoverPhotoUrl = dbModel.CoverPhotoUrl;
+            Blurb = dbModel.Blurb;
+            Genre = dbModel.Genre;
+            YearPublished = dbModel.YearPublished;
+            Authors = dbModel.Authors.Select(a => new BookAuthorViewModel(a)).ToList();
+        }
     }
 }
