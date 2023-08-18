@@ -1,0 +1,27 @@
+@model MemberViewModel
+@{
+    ViewData["Title"] = "Member Page";
+}
+
+<div class="text-center">
+     
+        <h1 class="display-4">@Model.Name</h1>
+        @if (string.IsNullOrEmpty(Model.Email))
+        {
+            <p>No Email Available</p>
+        }
+        else
+        {
+            <p>@Model.Email</p>
+        }        
+
+        @if (Model.DateEnrolled.HasValue)
+        {
+            <p>@Model.DateEnrolled</p>
+        }
+        else
+        {
+            <p>No Enrollment Date available.</p>
+        }
+
+</div>

@@ -1,0 +1,13 @@
+﻿@model List<MemberViewModel>
+@{
+    ViewData["Title"] = "Member List";
+}
+
+<div class="text-center">
+    @foreach (MemberViewModel member in Model)
+    {
+        <a  asp-controller="Members" asp-action="@member.Id">        
+            <h1 class="display-4">@member.Name</h1>
+        </a>
+    }
+</div>
