@@ -6,7 +6,10 @@
 <div class="text-center">
     @foreach (BookViewModel book in Model)
     {
-        <h1 class="display-4">@book.Title</h1>
+        <a  asp-controller="Books" asp-action="@book.Isbn">        
+            <h1 class="display-4">@book.Title</h1>
+        </a>
+       
         @if (string.IsNullOrEmpty(book.CoverPhotoUrl))
         {
             <p>No Cover Image Available @book.Title</p>
@@ -15,7 +18,6 @@
         {
             <img src="@book.CoverPhotoUrl" alt="Book Cover Image" width="100">
         }
-
         @if (string.IsNullOrEmpty(book.Genre))
         {
             <p>No Genre Available</p>

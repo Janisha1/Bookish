@@ -6,7 +6,11 @@
 <div class="text-center">
     @foreach (AuthorViewModel author in Model)
     {
-        <h1 class="display-4">@author.Name</h1>
+        
+        <a  asp-controller="Authors" asp-action="@author.Id">        
+            <h1 class="display-4">@author.Name</h1>
+        </a>
+        
         @if (string.IsNullOrEmpty(author.AuthorPhotoUrl))
         {
             <p>No Author Image Available for @author.Name</p>

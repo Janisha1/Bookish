@@ -15,6 +15,21 @@
          <img src="@Model.CoverPhotoUrl" alt="Book Cover Image" width="100">
     }
 
+    @if(Model.Authors == null)
+    {
+        <p>No Authors available</p>
+    }
+    else
+    {
+        @foreach(var author in Model.Authors)
+        {
+            <a  asp-controller="Authors" asp-action="@author.Id">        
+                <p class="display-6">@author.Name</p>
+            </a>
+        }
+
+    }
+
     @if(string.IsNullOrEmpty(Model.Blurb))
     {
         <p>No Blurb Available</p>

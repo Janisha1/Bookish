@@ -32,4 +32,19 @@
     {        
         <p>@Model.Bio</p>
     }
+
+    @if(Model.Books == null)
+    {
+        <p>Author has no Books Available </p>
+    }
+    else
+    {
+        @foreach(var book in Model.Books)
+        {
+            <a  asp-controller="Books" asp-action="@book.Isbn">        
+                <p class="display-6">@book.Title</p>
+            </a>
+        }
+    }
+
 </div>
