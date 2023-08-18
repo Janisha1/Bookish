@@ -37,12 +37,15 @@ public class BookViewModel
         Isbn = isbn;
         Title = title;
         Authors = new List<BookAuthorViewModel>();
+        Copies = new List<BookCopyViewModel>();
     }
 
     public BookViewModel(BookModel dbModel)
     {
-
-        if (dbModel.Isbn == null || dbModel.Title == null || dbModel.Authors == null)
+        if (dbModel.Isbn == null 
+            || dbModel.Title == null 
+            || dbModel.Authors == null
+            || dbModel.Copies == null)
         {
             throw new ArgumentException("fields can't be null");
         }
@@ -55,6 +58,7 @@ public class BookViewModel
             Genre = dbModel.Genre;
             YearPublished = dbModel.YearPublished;
             Authors = dbModel.Authors.Select(a => new BookAuthorViewModel(a)).ToList();
+            Copies = dbModel.Copies.Select(c => new BookCopyViewModel(c)).ToList();
         }
     }
 }

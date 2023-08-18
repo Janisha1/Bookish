@@ -23,6 +23,7 @@ public class BookRepo : IBookRepo
     {
         return _context.Books
         .Include(b => b.Authors)
+        .Include(b =>b.Copies)
         .ToList();
     }
 
@@ -30,6 +31,7 @@ public class BookRepo : IBookRepo
     {
         return _context.Books
         .Include(b => b.Authors)
+        .Include(b =>b.Copies)
         .Where(b => b.Isbn == isbn)
         .Single();
     }

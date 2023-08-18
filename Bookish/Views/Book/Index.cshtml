@@ -32,5 +32,15 @@
         {
             <p>No Year of Publication available.</p>
         }
+
+        @if (book.Copies == null)
+        {
+            <p>No Copies Stocked by This Library.</p>
+
+        }
+        else
+        {           
+            <p>Total Library Copies @book.Copies.Count</p>
+        }
     }
 </div>
